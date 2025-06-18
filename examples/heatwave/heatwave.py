@@ -80,7 +80,8 @@ config = Config(
         workflow=[
             WorkflowStepConfig(
                 type=WorkflowType.RUN,
-                days=3,
+                days=1,
+                ticks_per_step=800000
             ),
             WorkflowStepConfig(
                 type=WorkflowType.ENVIRONMENT_INTERVENE,
@@ -94,7 +95,8 @@ config = Config(
             ),
             WorkflowStepConfig(
                 type=WorkflowType.RUN,
-                days=3,
+                days=1,
+                ticks_per_step=800000
             ),
             WorkflowStepConfig(
                 type=WorkflowType.ENVIRONMENT_INTERVENE,
@@ -108,7 +110,8 @@ config = Config(
             ),
             WorkflowStepConfig(
                 type=WorkflowType.RUN,
-                days=3,
+                days=1,
+                ticks_per_step=800000
             ),
         ],
         environment=EnvironmentConfig(
