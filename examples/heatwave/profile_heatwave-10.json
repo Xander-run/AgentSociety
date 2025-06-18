@@ -1,0 +1,112 @@
+[
+    {
+        "home": 500020313,
+        "work": 500016351,
+        "gender": "female",
+        "race": "white",
+        "education": "below bachelor",
+        "income": 78231,
+        "consumption": "slightly high",
+        "age": 70,
+        "id": 1
+    },
+    {
+        "home": 500003197,
+        "work": 500001044,
+        "gender": "female",
+        "race": "white",
+        "education": "bachelor and above",
+        "income": 57065,
+        "consumption": "slightly high",
+        "age": 45,
+        "id": 2
+    },
+    {
+        "home": 500000210,
+        "work": 500002286,
+        "gender": "male",
+        "race": "white",
+        "education": "below bachelor",
+        "income": 32751,
+        "consumption": "median",
+        "age": 62,
+        "id": 3
+    },
+    {
+        "home": 500021394,
+        "work": 500003403,
+        "gender": "female",
+        "race": "white",
+        "education": "bachelor and above",
+        "income": 72840,
+        "consumption": "median",
+        "age": 38,
+        "id": 4
+    },
+    {
+        "home": 500002906,
+        "work": 500019428,
+        "gender": "male",
+        "race": "black",
+        "education": "below bachelor",
+        "income": 33071,
+        "consumption": "slightly high",
+        "age": 75,
+        "id": 5
+    },
+    {
+        "home": 500008331,
+        "work": 500000078,
+        "gender": "female",
+        "race": "white",
+        "education": "below bachelor",
+        "income": 56422,
+        "consumption": "slightly high",
+        "age": 70,
+        "id": 6
+    },
+    {
+        "home": 500007321,
+        "work": 500016907,
+        "gender": "male",
+        "race": "white",
+        "education": "below bachelor",
+        "income": 61889,
+        "consumption": "median",
+        "age": 64,
+        "id": 7
+    },
+    {
+          "home": 500019748,
+          "work": 500002906,
+          "gender": "male",
+          "race": "white",
+          "education": "below bachelor",
+          "income": 51244,
+          "consumption": "median",
+          "age": 63,
+          "id": 8
+      },
+    {
+          "home": 500000747,
+          "work": 500002172,
+          "gender": "male",
+          "race": "black",
+          "education": "bachelor and above",
+          "income": 20045,
+          "consumption": "median",
+          "age": 33,
+          "id": 9
+      },
+    {
+          "home": 500019335,
+          "work": 500002912,
+          "gender": "female",
+          "race": "white",
+          "education": "bachelor and above",
+          "income": 80767,
+          "consumption": "slightly high",
+          "age": 45,
+          "id": 10
+      }
+]
