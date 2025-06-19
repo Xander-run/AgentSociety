@@ -70,7 +70,7 @@ config = Config(
         citizens=[
             AgentConfig(
                 agent_class=AgentClassType.CITIZEN,
-                number=10,
+                number=500,
                 # param_config=json.load(open("profile_heatwave-10.json")),
             )
         ],
