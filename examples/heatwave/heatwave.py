@@ -52,7 +52,7 @@ config = Config(
             num_workers="auto",
         ),
         avro=AvroConfig(
-            path="avro-output.avro",
+            path="avro-output",
             enabled=True,
         ),
         mlflow=MlflowConfig(
@@ -64,14 +64,14 @@ config = Config(
     ),
     map=MapConfig(
         file_path="beijing_map.pb",
-        cache_path="cache"
+        cache_path="map-cache"
     ),
     agents=AgentsConfig(
         citizens=[
             AgentConfig(
                 agent_class=AgentClassType.CITIZEN,
                 number=10,
-                memory_from_file="profiles_heatwave-10.json",
+                # param_config=json.load(open("profile_heatwave-10.json")),
             )
         ],
     ),
@@ -80,8 +80,8 @@ config = Config(
         workflow=[
             WorkflowStepConfig(
                 type=WorkflowType.RUN,
-                days=1,
-                ticks_per_step=800000
+                days=3,
+                # ticks_per_step=800000
             ),
             WorkflowStepConfig(
                 type=WorkflowType.ENVIRONMENT_INTERVENE,
@@ -95,8 +95,8 @@ config = Config(
             ),
             WorkflowStepConfig(
                 type=WorkflowType.RUN,
-                days=1,
-                ticks_per_step=800000
+                days=3,
+                # ticks_per_step=800000
             ),
             WorkflowStepConfig(
                 type=WorkflowType.ENVIRONMENT_INTERVENE,
@@ -110,8 +110,8 @@ config = Config(
             ),
             WorkflowStepConfig(
                 type=WorkflowType.RUN,
-                days=1,
-                ticks_per_step=800000
+                days=3,
+                # ticks_per_step=800000
             ),
         ],
         environment=EnvironmentConfig(
