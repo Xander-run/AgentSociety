@@ -80,7 +80,7 @@ config = Config(
             base_url=None,
             api_key="sk-4a63b53a3ccd4a9ca5fe2ed4530ff056",
             model="qwen-plus",
-            semaphore=10,
+            semaphore=100,
         )
     ],
     env=EnvConfig(
