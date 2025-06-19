@@ -77,7 +77,7 @@ config = Config(
     llm=[
         LLMConfig(
             provider=LLMProviderType.Qwen,
-            base_url=None,
+            base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
             api_key="sk-4a63b53a3ccd4a9ca5fe2ed4530ff056",
             model="qwen-plus",
             semaphore=100,
@@ -113,7 +113,7 @@ config = Config(
         citizens=[
             AgentConfig(
                 agent_class=AgentClassType.CITIZEN,
-                number=100,
+                number=10,
                 # memory_config_func=memory_config_societyagent_heatwave,
             )
         ],
