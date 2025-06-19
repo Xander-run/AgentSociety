@@ -6,6 +6,3 @@ eval "$(pyenv virtualenv-init -)"
 
 pyenv activate as-137
 python heatwave.py
-
-pyenv activate as-137
-python heatwave.py
