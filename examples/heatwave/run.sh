@@ -1,6 +1,11 @@
+#!/bin/bash
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+
+pyenv activate as-137
+python heatwave.py
 
 pyenv activate as-137
 python heatwave.py
