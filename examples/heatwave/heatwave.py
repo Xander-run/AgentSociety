@@ -24,6 +24,7 @@ from agentsociety.configs.exp import WorkflowStepConfig, WorkflowType, MetricExt
 from agentsociety.environment import EnvironmentConfig
 from agentsociety.llm import LLMProviderType
 from agentsociety.simulation import AgentSociety
+from examples.heatwave.heatwave_memory_config import memory_config_societyagent_heatwave
 
 ray.init(logging_level=logging.INFO)
 
@@ -45,7 +46,6 @@ async def need_metric(simulation: AgentSociety):
                 value=hunger_info,
                 step=getattr(need_metric, "step_count"),
             )
-            print("hunger-satisfaction-" + str(agent_id) + ": " + str(hunger_info))
     # record energy need of each agent
     for energy_info_gather in energy_info_gathers:
         for agent_id, energy_info in energy_info_gather.items():
@@ -54,7 +54,6 @@ async def need_metric(simulation: AgentSociety):
                 value=energy_info,
                 step=getattr(need_metric, "step_count"),
             )
-            print("energy-satisfaction-" + str(agent_id) + ": " + str(energy_info))
     # record safety need of each agent
     for safety_info_gather in safety_info_gathers:
         for agent_id, safety_info in safety_info_gather.items():
@@ -63,7 +62,6 @@ async def need_metric(simulation: AgentSociety):
                 value=safety_info,
                 step=getattr(need_metric, "step_count"),
             )
-            print("safety-satisfaction-" + str(agent_id) + ": " + str(safety_info))
     # record social need of each agent
     for social_info_gather in social_info_gathers:
         for agent_id, social_info in social_info_gather.items():
@@ -72,18 +70,17 @@ async def need_metric(simulation: AgentSociety):
                 value=social_info,
                 step=getattr(need_metric, "step_count"),
             )
-            print("social-satisfaction-" + str(agent_id) + ": " + str(social_info))
 
     setattr(need_metric, "step_count", getattr(need_metric, "step_count") + 1)
 
 config = Config(
     llm=[
         LLMConfig(
-            provider=LLMProviderType.ZhipuAI,
-            base_url="https://open.bigmodel.cn/api/paas/v4/",
+            provider=LLMProviderType.Qwen,
+            base_url=None,
             api_key="TODO",
-            model="GLM-4-Flash",
-            semaphore=150,
+            model="qwen-plus",
+            semaphore=10,
         )
     ],
     env=EnvConfig(
@@ -116,8 +113,8 @@ config = Config(
         citizens=[
             AgentConfig(
                 agent_class=AgentClassType.CITIZEN,
-                number=100,
-                # param_config=json.load(open("profile_heatwave-10.json")),
+                number=500,
+                memory_config_func=memory_config_societyagent_heatwave,
             )
         ],
     ),
@@ -126,7 +123,7 @@ config = Config(
         workflow=[
             WorkflowStepConfig(
                 type=WorkflowType.RUN,
-                days=1,
+                days=3,
                 ticks_per_step=1800
             ),
             WorkflowStepConfig(
@@ -141,7 +138,7 @@ config = Config(
             ),
             WorkflowStepConfig(
                 type=WorkflowType.RUN,
-                days=2,
+                days=3,
                 ticks_per_step=1800
             ),
             WorkflowStepConfig(
@@ -156,7 +153,7 @@ config = Config(
             ),
             WorkflowStepConfig(
                 type=WorkflowType.RUN,
-                days=1,
+                days=3,
                 ticks_per_step=1800
             ),
         ],
