@@ -83,7 +83,7 @@ config = Config(
             base_url="https://open.bigmodel.cn/api/paas/v4/",
             api_key="TODO",
             model="GLM-4-Flash",
-            semaphore=200,
+            semaphore=150,
         )
     ],
     env=EnvConfig(
@@ -126,7 +126,7 @@ config = Config(
         workflow=[
             WorkflowStepConfig(
                 type=WorkflowType.RUN,
-                days=2,
+                days=1,
                 ticks_per_step=1800
             ),
             WorkflowStepConfig(
@@ -156,7 +156,7 @@ config = Config(
             ),
             WorkflowStepConfig(
                 type=WorkflowType.RUN,
-                days=2,
+                days=1,
                 ticks_per_step=1800
             ),
         ],
@@ -167,7 +167,7 @@ config = Config(
             MetricExtractorConfig(
                 type=MetricType.FUNCTION,
                 func=need_metric,
-                step_interval=1,
+                step_interval=2,
             )
         ],
     ),
