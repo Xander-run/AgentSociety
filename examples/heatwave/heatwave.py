@@ -35,7 +35,7 @@ async def need_metric(simulation: AgentSociety):
     # retrieve infos
     citizen_agents = await simulation.filter(types=(SocietyAgent,))
     hunger_info_gathers = await simulation.gather("hunger_satisfaction", citizen_agents)
-    energy_info_gathers = await simulation.gather("energy_satisfaction", citizen_agents)
+    # energy_info_gathers = await simulation.gather("energy_satisfaction", citizen_agents)
     safety_info_gathers = await simulation.gather("safety_satisfaction", citizen_agents)
     social_info_gathers = await simulation.gather("social_satisfaction", citizen_agents)
     # record hunger need of each agent
@@ -47,13 +47,13 @@ async def need_metric(simulation: AgentSociety):
                 step=getattr(need_metric, "step_count"),
             )
     # record energy need of each agent
-    for energy_info_gather in energy_info_gathers:
-        for agent_id, energy_info in energy_info_gather.items():
-            await simulation.mlflow_client.log_metric(
-                key="energy-satisfaction-" + str(agent_id),
-                value=energy_info,
-                step=getattr(need_metric, "step_count"),
-            )
+    # for energy_info_gather in energy_info_gathers:
+    #     for agent_id, energy_info in energy_info_gather.items():
+    #         await simulation.mlflow_client.log_metric(
+    #             key="energy-satisfaction-" + str(agent_id),
+    #             value=energy_info,
+    #             step=getattr(need_metric, "step_count"),
+    #         )
     # record safety need of each agent
     for safety_info_gather in safety_info_gathers:
         for agent_id, safety_info in safety_info_gather.items():
@@ -164,7 +164,7 @@ config = Config(
             MetricExtractorConfig(
                 type=MetricType.FUNCTION,
                 func=need_metric,
-                step_interval=2,
+                step_interval=4,
             )
         ],
     ),
