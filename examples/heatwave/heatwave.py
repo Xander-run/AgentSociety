@@ -24,7 +24,7 @@ from agentsociety.configs.exp import WorkflowStepConfig, WorkflowType, MetricExt
 from agentsociety.environment import EnvironmentConfig
 from agentsociety.llm import LLMProviderType
 from agentsociety.simulation import AgentSociety
-from examples.heatwave.heatwave_memory_config import memory_config_societyagent_heatwave
+from heatwave_memory_config import memory_config_societyagent_heatwave
 
 ray.init(logging_level=logging.INFO)
 
@@ -78,7 +78,7 @@ config = Config(
         LLMConfig(
             provider=LLMProviderType.Qwen,
             base_url=None,
-            api_key="TODO",
+            api_key="sk-4a63b53a3ccd4a9ca5fe2ed4530ff056",
             model="qwen-plus",
             semaphore=10,
         )
