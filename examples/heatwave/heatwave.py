@@ -113,7 +113,7 @@ config = Config(
         citizens=[
             AgentConfig(
                 agent_class=AgentClassType.CITIZEN,
-                number=10,
+                number=50,
                 # memory_config_func=memory_config_societyagent_heatwave,
             )
         ],
