@@ -13,12 +13,12 @@ def normal_run(days: int):
     return WorkflowStepConfig(
         type=WorkflowType.RUN,
         days=days,
-        ticks_per_step=1800
+        ticks_per_step=43200
     )
 
 Survey1 = WorkflowStepConfig(
     type=WorkflowType.SURVEY,
-    target_agent=[i for i in range(5, 105)],  # adjust this as needed
+    target_agent=[i for i in range(5, 10)],  # adjust this as needed
     survey=Survey(
         id=uuid4(),
         title="Perception and Coping Behaviors During Extreme Heat",
@@ -218,7 +218,7 @@ Survey1 = WorkflowStepConfig(
 
 Survey2 = WorkflowStepConfig(
     type=WorkflowType.SURVEY,
-    target_agent=[i for i in range(5, 105)],  # adjust this as needed
+    target_agent=[i for i in range(5, 10)],  # adjust this as needed
     survey=Survey(
         id=uuid4(),
         title="Mental Health survey",
@@ -440,7 +440,7 @@ Survey2 = WorkflowStepConfig(
 
 Broadcast1 = WorkflowStepConfig(
     type=WorkflowType.MESSAGE_INTERVENE,
-    target_agent=[i for i in range(5, 105)],  # adjust this as needed
+    target_agent=[i for i in range(5, 10)],  # adjust this as needed
 
     intervene_message="""
     Red Heatwave Warning Issued by New York City Meteorological Observatory
@@ -457,7 +457,7 @@ Broadcast1 = WorkflowStepConfig(
 
 Broadcast2 = WorkflowStepConfig(
     type=WorkflowType.MESSAGE_INTERVENE,
-    target_agent=[i for i in range(5, 105)],  # adjust this as needed
+    target_agent=[i for i in range(5, 10)],  # adjust this as needed
 
     intervene_message="""
     Heatwave Has Subsided – Weather Returns to Normal — New York City

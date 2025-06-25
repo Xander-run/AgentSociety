@@ -114,7 +114,7 @@ config = Config(
         citizens=[
             AgentConfig(
                 agent_class=AgentClassType.CITIZEN,
-                number=100,
+                number=5,
                 memory_config_func=memory_config_societyagent_heatwave,
             )
         ],
@@ -123,23 +123,11 @@ config = Config(
         name="heatwave_impact",
         workflow=[
             # ======== base line ========
-            normal_run(2),
+            normal_run(1),
             Survey2,
             Broadcast1,
             normal_run(1),
             # ======== heat wave begin ========
-            WorkflowStepConfig(
-                type=WorkflowType.ENVIRONMENT_INTERVENE,
-                key="weather",
-                value="A severe heatwave has settled over the city, leading to dangerously high temperatures and causing significant difficulties for residents."
-            ),
-            WorkflowStepConfig(
-                type=WorkflowType.ENVIRONMENT_INTERVENE,
-                key="temperature",
-                value="40 degrees Celsius",
-            ),
-            normal_run(5),
-            Survey2,
             # ======== back to normal ========
             WorkflowStepConfig(
                 type=WorkflowType.ENVIRONMENT_INTERVENE,
@@ -154,19 +142,12 @@ config = Config(
             normal_run(1),
             Survey1,
             Broadcast2,
-            normal_run(4),
+            normal_run(1),
             Survey2,
         ],
         environment=EnvironmentConfig(
             start_tick=6 * 60 * 60,
         ),
-        metric_extractors=[
-            MetricExtractorConfig(
-                type=MetricType.FUNCTION,
-                func=need_metric,
-                step_interval=4,
-            )
-        ],
     ),
 )
 
