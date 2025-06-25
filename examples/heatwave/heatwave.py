@@ -24,6 +24,7 @@ from agentsociety.configs.exp import WorkflowStepConfig, WorkflowType, MetricExt
 from agentsociety.environment import EnvironmentConfig
 from agentsociety.llm import LLMProviderType
 from agentsociety.simulation import AgentSociety
+from heat_wave_config import Survey1, Survey2, Broadcast1, Broadcast2, normal_run
 from heatwave_memory_config import memory_config_societyagent_heatwave
 
 ray.init(logging_level=logging.INFO)
@@ -78,7 +79,7 @@ config = Config(
         LLMConfig(
             provider=LLMProviderType.Qwen,
             base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-            api_key="sk-4a63b53a3ccd4a9ca5fe2ed4530ff056",
+            api_key="TODO",
             model="qwen-plus",
             semaphore=100,
         )
@@ -106,7 +107,7 @@ config = Config(
         ),
     ),
     map=MapConfig(
-        file_path="beijing_map.pb",
+        file_path="ny_map.pb",
         cache_path="map-cache"
     ),
     agents=AgentsConfig(
@@ -121,11 +122,12 @@ config = Config(
     exp=ExpConfig(
         name="heatwave_impact",
         workflow=[
-            WorkflowStepConfig(
-                type=WorkflowType.RUN,
-                days=3,
-                ticks_per_step=1800
-            ),
+            # ======== base line ========
+            normal_run(2),
+            Survey2,
+            Broadcast1,
+            normal_run(1),
+            # ======== heat wave begin ========
             WorkflowStepConfig(
                 type=WorkflowType.ENVIRONMENT_INTERVENE,
                 key="weather",
@@ -136,11 +138,9 @@ config = Config(
                 key="temperature",
                 value="40 degrees Celsius",
             ),
-            WorkflowStepConfig(
-                type=WorkflowType.RUN,
-                days=3,
-                ticks_per_step=1800
-            ),
+            normal_run(5),
+            Survey2,
+            # ======== back to normal ========
             WorkflowStepConfig(
                 type=WorkflowType.ENVIRONMENT_INTERVENE,
                 key="weather",
@@ -149,13 +149,13 @@ config = Config(
             WorkflowStepConfig(
                 type=WorkflowType.ENVIRONMENT_INTERVENE,
                 key="temperature",
-                value="25 degrees Celsius",
+                value="30 degrees Celsius",
             ),
-            WorkflowStepConfig(
-                type=WorkflowType.RUN,
-                days=3,
-                ticks_per_step=1800
-            ),
+            normal_run(1),
+            Survey1,
+            Broadcast2,
+            normal_run(4),
+            Survey2,
         ],
         environment=EnvironmentConfig(
             start_tick=6 * 60 * 60,
