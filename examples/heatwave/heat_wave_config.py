@@ -22,7 +22,11 @@ Survey1 = WorkflowStepConfig(
     survey=Survey(
         id=uuid4(),
         title="Perception and Coping Behaviors During Extreme Heat",
-        description="We are conducting research on public perception, health risk awareness, and coping strategies during extreme heat events. This survey aims to understand your experiences and behaviors during high-temperature periods. All responses are anonymous and will be used solely for statistical analysis. Please answer based on your actual experiences. This survey will take approximately 5-8 minutes to complete. Thank you for your participation!",
+        description="""
+            We are conducting research on public perception, health risk awareness, and coping strategies during extreme heat events. This survey aims to understand your experiences and behaviors during high-temperature periods. All responses are anonymous and will be used solely for statistical analysis. Please answer based on your actual experiences. This survey will take approximately 5-8 minutes to complete. Thank you for your participation!
+                
+            Response in JSON format.
+            """,
         created_at=datetime.datetime.now(),
         pages=[
             Page(
@@ -222,6 +226,8 @@ Survey2 = WorkflowStepConfig(
         The government is conducting a brief mental health survey.
         
         Please take a moment to reflect on your current mental and emotional state, and respond honestly to the following questions. Your answers will be kept confidential.
+        
+        Response in JSON format.
         """,
         created_at=datetime.datetime.now(),
         pages=[
