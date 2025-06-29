@@ -25,7 +25,7 @@ from agentsociety.environment import EnvironmentConfig
 from agentsociety.llm import LLMProviderType
 from agentsociety.simulation import AgentSociety
 from heat_wave_config import Survey1, Survey2, Broadcast1, Broadcast2, normal_run
-from heatwave_memory_config import memory_config_societyagent_heatwave
+from heatwave_agent_memory_config import memory_config_societyagent_heatwave
 
 ray.init(logging_level=logging.INFO)
 
